@@ -1,0 +1,12 @@
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\bin\Debug\net6.0\UP_TAP_LicenciasConducir.Core.deps.json
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\bin\Debug\net6.0\UP_TAP_LicenciasConducir.Core.dll
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\bin\Debug\net6.0\UP_TAP_LicenciasConducir.Core.pdb
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\obj\Debug\net6.0\UP_TAP_LicenciasConducir.Core.csproj.AssemblyReference.cache
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\obj\Debug\net6.0\UP_TAP_LicenciasConducir.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\obj\Debug\net6.0\UP_TAP_LicenciasConducir.Core.AssemblyInfoInputs.cache
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\obj\Debug\net6.0\UP_TAP_LicenciasConducir.Core.AssemblyInfo.cs
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\obj\Debug\net6.0\UP_TAP_LicenciasConducir.Core.csproj.CoreCompileInputs.cache
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\obj\Debug\net6.0\UP_TAP_LicenciasConducir.Core.dll
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\obj\Debug\net6.0\refint\UP_TAP_LicenciasConducir.Core.dll
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\obj\Debug\net6.0\UP_TAP_LicenciasConducir.Core.pdb
+C:\Repos\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.Core\obj\Debug\net6.0\ref\UP_TAP_LicenciasConducir.Core.dll

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\UP_TAP_LicenciasConducir.API.props" />
+</Project>
