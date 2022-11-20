@@ -1,15 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using UP_TAP_LicenciasConducir.Core.Entities;
 
 namespace UP_TAP_LicenciasConducir.Infrastructure.Data
 {
-    public partial class LicenciasConducirDataContext : DbContext
+    public class LicenciasConducirDataContext : DbContext
     {
         public LicenciasConducirDataContext()
         {
@@ -31,6 +27,19 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                IConfigurationRoot configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+                var connectionString = configuration.GetConnectionString("DataContext");
+                optionsBuilder.UseSqlServer(connectionString);
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace UP_TAP_LicenciasConducir.Core.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace UP_TAP_LicenciasConducir.Core.Entities
 {
     public abstract class BaseEntity
     {

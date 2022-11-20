@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,6 @@ namespace UP_TAP_LicenciasConducir.Core.Entities
     {
         public string Description { get; set; }
         public virtual ICollection<Answer> Answer { get; set; }
-        public List<Quiz> Quizzes { get; set; }
-        public List<QuizQuestion> QuizQuestions { get; set; }
-
 
     }
 }

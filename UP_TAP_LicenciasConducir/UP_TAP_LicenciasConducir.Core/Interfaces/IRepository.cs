@@ -7,7 +7,7 @@ using UP_TAP_LicenciasConducir.Core.Entities;
 
 namespace UP_TAP_LicenciasConducir.Core.Interfaces
 {
-    public interface IGenericRepository<T> where T : BaseEntity
+    public interface IRepository<T> where T : BaseEntity
     {
         IEnumerable<T> GetAll();
         Task<T> GetById(int id);

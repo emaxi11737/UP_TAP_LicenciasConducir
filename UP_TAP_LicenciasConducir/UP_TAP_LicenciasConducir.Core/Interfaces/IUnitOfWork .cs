@@ -4,18 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using UP_TAP_LicenciasConducir.Core.Entities;
 
 namespace UP_TAP_LicenciasConducir.Core.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        //IPostRepository PostRepository { get; }
-
-        //IRepository<User> UserRepository { get; }
-
-        //IRepository<Comment> CommentRepository { get; }
-
-        //ISecurityRepository SecurityRepository { get; }
+        IRepository<Question> QuestionRepository { get; }
 
         void SaveChanges();
 
