@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UP_TAP_LicenciasConducir.Core.QueryFilters
 {
-    public class QuestionQueryFilter
+    public class QueryFilter
     {
         public int PageSize { get; set; }
 

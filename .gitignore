@@ -1,3 +1,9 @@
-UP_TAP_LicenciasConducir\UP_TAP_LicenciasConducir.API\bin
+UP_TAP_LicenciasConducir/UP_TAP_LicenciasConducir.API/bin/*
+UP_TAP_LicenciasConducir/UP_TAP_LicenciasConducir.Core/bin/*
+UP_TAP_LicenciasConducir/UP_TAP_LicenciasConducir.Infrastructure/bin/*
+UP_TAP_LicenciasConducir/UP_TAP_LicenciasConducir.API/obj/*
+UP_TAP_LicenciasConducir/UP_TAP_LicenciasConducir.Core/obj/*
+UP_TAP_LicenciasConducir/UP_TAP_LicenciasConducir.Infrastructure/obj/*
+UP_TAP_LicenciasConducir/.vs/*
 *.vsidx
 *.dll

@@ -13,13 +13,15 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private readonly LicenciasConducirDataContext _context;
-        private readonly IRepository<Question> _questionRepository;
+        private readonly IQuestionRepository _questionRepository;
+        private readonly IRepository<Answer> _answerRepository;
 
         public UnitOfWork(LicenciasConducirDataContext context)
         {
             _context = context;
         }
-        public IRepository<Question> QuestionRepository => _questionRepository ?? new BaseRepository<Question>(_context);
+        public IQuestionRepository QuestionRepository => _questionRepository ?? new QuestionRepository(_context);
+        public IRepository<Answer> AnswerRepository => _answerRepository ?? new BaseRepository<Answer>(_context);
 
         public void Dispose()
         {

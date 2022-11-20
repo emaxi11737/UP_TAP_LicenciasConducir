@@ -13,5 +13,6 @@ namespace UP_TAP_LicenciasConducir.Core.DTOs
         public string Description { get; set; }
         public bool IsRight { get; set; }
         public int QuestionId { get; set; }
+
     }
 }

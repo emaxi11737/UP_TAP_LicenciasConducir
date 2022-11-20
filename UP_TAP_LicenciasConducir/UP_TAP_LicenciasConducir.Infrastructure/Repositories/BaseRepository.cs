@@ -26,7 +26,8 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Repositories
             return _entities.AsEnumerable();
         }
 
-        public async Task<T> GetById(int id)
+
+        public virtual async Task<T> GetById(int id)
         {
             return await _entities.FindAsync(id);
         }

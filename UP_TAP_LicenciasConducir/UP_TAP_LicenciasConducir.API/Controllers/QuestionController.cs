@@ -40,7 +40,7 @@ namespace UP_TAP_LicenciasConducir.API.Controllers
         [HttpGet(Name = nameof(GetQuestions))]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<QuestionDto>>))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public IActionResult GetQuestions([FromQuery] QuestionQueryFilter filters)
+        public IActionResult GetQuestions([FromQuery] QueryFilter filters)
         {
             var Questions = _questionService.GetQuestions(filters);
             var QuestionsDtos = _mapper.Map<IEnumerable<QuestionDto>>(Questions);
@@ -53,8 +53,43 @@ namespace UP_TAP_LicenciasConducir.API.Controllers
                 TotalPages = Questions.TotalPages,
                 HasNextPage = Questions.HasNextPage,
                 HasPreviousPage = Questions.HasPreviousPage,
-                NextPageUrl = _uriService.GetQuestionPaginationUri(filters, Url.RouteUrl(nameof(GetQuestions))).ToString(),
-                PreviousPageUrl = _uriService.GetQuestionPaginationUri(filters, Url.RouteUrl(nameof(GetQuestions))).ToString()
+                NextPageUrl = _uriService.GetPaginationUri(filters, Url.RouteUrl(nameof(GetQuestions))).ToString(),
+                PreviousPageUrl = _uriService.GetPaginationUri(filters, Url.RouteUrl(nameof(GetQuestions))).ToString()
+            };
+
+            var response = new ApiResponse<IEnumerable<QuestionDto>>(QuestionsDtos)
+            {
+                Meta = metadata
+            };
+
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Retrieve all Questions
+        /// </summary>
+        /// <param name="filters">Filters to apply</param>
+        /// <returns></returns>
+        [HttpGet("Random")]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<QuestionDto>>))]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public IActionResult GetRandomQuestions([FromQuery] QueryFilter filters)
+        {
+            var Questions = _questionService.GetRandomQuestions(filters);
+            var QuestionsDtos = _mapper.Map<IEnumerable<QuestionDto>>(Questions);
+
+            var metadata = new Metadata
+            {
+                TotalCount = Questions.TotalCount,
+                PageSize = Questions.PageSize,
+                CurrentPage = Questions.CurrentPage,
+                TotalPages = Questions.TotalPages,
+                HasNextPage = Questions.HasNextPage,
+                HasPreviousPage = Questions.HasPreviousPage,
+                NextPageUrl = _uriService.GetPaginationUri(filters, Url.RouteUrl(nameof(GetRandomQuestions))).ToString(),
+                PreviousPageUrl = _uriService.GetPaginationUri(filters, Url.RouteUrl(nameof(GetRandomQuestions))).ToString()
             };
 
             var response = new ApiResponse<IEnumerable<QuestionDto>>(QuestionsDtos)
@@ -89,9 +124,9 @@ namespace UP_TAP_LicenciasConducir.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(int id, QuestionDto QuestionDto)
+        public async Task<IActionResult> Put(int id, QuestionPatchDto QuestionPatchDto)
         {
-            var Question = _mapper.Map<Question>(QuestionDto);
+            var Question = _mapper.Map<Question>(QuestionPatchDto);
             Question.Id = id;
 
             var result = await _questionService.UpdateQuestion(Question);

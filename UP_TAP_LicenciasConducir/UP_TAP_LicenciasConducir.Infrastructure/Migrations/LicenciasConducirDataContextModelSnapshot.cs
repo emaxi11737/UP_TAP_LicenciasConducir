@@ -44,7 +44,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("Answer");
+                    b.ToTable("Answer", (string)null);
                 });
 
             modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.Exam", b =>
@@ -60,7 +60,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Exams");
+                    b.ToTable("Exams", (string)null);
                 });
 
             modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.Intermediates.QuizQuestion", b =>
@@ -83,7 +83,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
 
                     b.HasIndex("QuizId");
 
-                    b.ToTable("QuizQuestion");
+                    b.ToTable("QuizQuestion", (string)null);
                 });
 
             modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.MedicalRevision", b =>
@@ -108,7 +108,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
                     b.HasIndex("ExamId")
                         .IsUnique();
 
-                    b.ToTable("MedicalRevisions");
+                    b.ToTable("MedicalRevisions", (string)null);
                 });
 
             modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.Question", b =>
@@ -125,7 +125,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Questions");
+                    b.ToTable("Questions", (string)null);
                 });
 
             modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.Quiz", b =>
@@ -151,7 +151,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
                     b.HasIndex("ExamId")
                         .IsUnique();
 
-                    b.ToTable("Quiz");
+                    b.ToTable("Quiz", (string)null);
                 });
 
             modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.Result", b =>
@@ -175,7 +175,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
 
                     b.HasIndex("ExamId");
 
-                    b.ToTable("Results");
+                    b.ToTable("Results", (string)null);
                 });
 
             modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.Answer", b =>

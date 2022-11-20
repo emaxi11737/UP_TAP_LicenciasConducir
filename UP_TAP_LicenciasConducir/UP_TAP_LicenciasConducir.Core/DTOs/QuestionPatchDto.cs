@@ -8,11 +8,8 @@ using UP_TAP_LicenciasConducir.Core.Entities;
 
 namespace UP_TAP_LicenciasConducir.Core.DTOs
 {
-    public class QuestionDto
+    public class QuestionPatchDto
     {
-        public int Id { get; set; }
         public string Description { get; set; }
-        public ICollection<AnswerDto> Answer { get; set; }
-
     }
 }

@@ -15,12 +15,14 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Mappings
         {
             CreateMap<Answer, AnswerDto>();
             CreateMap<AnswerDto, Answer>();
+            CreateMap<AnswerPatchDto, Answer>();
             CreateMap<ExamDto, Exam>();
             CreateMap<Exam, ExamDto>();
             CreateMap<MedicalRevision, MedicalRevisionDto>();
             CreateMap<MedicalRevisionDto, MedicalRevision>();
             CreateMap<Question, QuestionDto>();
             CreateMap<QuestionDto, Question>();
+            CreateMap<QuestionPatchDto, Question>();
             CreateMap<Quiz, QuizDto>();
             CreateMap<QuizDto, Quiz>();
             CreateMap<Result, ResultDto>();

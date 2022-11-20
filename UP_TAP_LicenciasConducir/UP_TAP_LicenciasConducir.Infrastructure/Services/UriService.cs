@@ -16,7 +16,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Services
             _baseUri = baseUri;
         }
 
-        public Uri GetQuestionPaginationUri(QuestionQueryFilter filter, string actionUrl)
+        public Uri GetPaginationUri(QueryFilter filter, string actionUrl)
         {
             string baseUrl = $"{_baseUri}{actionUrl}";
             return new Uri(baseUrl);

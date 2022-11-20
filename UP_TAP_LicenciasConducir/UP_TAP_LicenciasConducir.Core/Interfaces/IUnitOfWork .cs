@@ -10,7 +10,8 @@ namespace UP_TAP_LicenciasConducir.Core.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<Question> QuestionRepository { get; }
+        IQuestionRepository QuestionRepository { get; }
+        IRepository<Answer> AnswerRepository { get; }
 
         void SaveChanges();
 

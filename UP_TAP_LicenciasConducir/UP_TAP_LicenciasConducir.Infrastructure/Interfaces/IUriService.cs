@@ -9,6 +9,6 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Services
 {
     public interface IUriService
     {
-        Uri GetQuestionPaginationUri(QuestionQueryFilter filter, string actionUrl);
+        Uri GetPaginationUri(QueryFilter filter, string actionUrl);
     }
 }
