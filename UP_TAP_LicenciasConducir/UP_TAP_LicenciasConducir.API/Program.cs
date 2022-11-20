@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.Text.Json.Serialization;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using UP_TAP_LicenciasConducir.Core.CustomEntities;
 using UP_TAP_LicenciasConducir.Core.Interfaces;
@@ -12,6 +13,7 @@ using UP_TAP_LicenciasConducir.Infrastructure.Data;
 using UP_TAP_LicenciasConducir.Infrastructure.Filters;
 using UP_TAP_LicenciasConducir.Infrastructure.Repositories;
 using UP_TAP_LicenciasConducir.Infrastructure.Services;
+using Utility = UP_TAP_LicenciasConducir.Core.Utilities.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +42,7 @@ builder.Services.Configure<PaginationOptions>(options => builder.Configuration.G
 
 builder.Services.AddTransient<IQuestionService, QuestionService>();
 builder.Services.AddTransient<IAnswerService, AnswerService>();
+builder.Services.AddTransient<IUtility, Utility>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddSingleton<IUriService>(provider =>

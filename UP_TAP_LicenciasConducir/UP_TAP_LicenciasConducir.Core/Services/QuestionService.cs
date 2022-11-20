@@ -16,11 +16,13 @@ namespace UP_TAP_LicenciasConducir.Core.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly PaginationOptions _paginationOptions;
+        private readonly IUtility _utility;
 
-        public QuestionService(IUnitOfWork unitOfWork, IOptions<PaginationOptions> options)
+        public QuestionService(IUnitOfWork unitOfWork, IOptions<PaginationOptions> options, IUtility utility)
         {
             _unitOfWork = unitOfWork;
             _paginationOptions = options.Value;
+            _utility = utility;
         }
 
      
@@ -46,8 +48,7 @@ namespace UP_TAP_LicenciasConducir.Core.Services
             filters.PageNumber = filters.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filters.PageNumber;
             filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageSize;
             
-            Random rnd = new Random();
-            var questions = _unitOfWork.QuestionRepository.GetAllInclude().OrderBy(x => rnd.Next()).Take(10);
+            var questions = _utility.Random(_unitOfWork.QuestionRepository.GetAllInclude());
 
             var pagedQuestions = PagedList<Question>.Create(questions, filters.PageNumber, filters.PageSize);
             return pagedQuestions;
