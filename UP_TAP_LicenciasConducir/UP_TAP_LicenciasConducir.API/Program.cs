@@ -1,16 +1,16 @@
 using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using System.Text.Json.Serialization;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
+using System.Text;
 using UP_TAP_LicenciasConducir.Core.CustomEntities;
 using UP_TAP_LicenciasConducir.Core.Interfaces;
 using UP_TAP_LicenciasConducir.Core.Services;
 using UP_TAP_LicenciasConducir.Infrastructure.Data;
 using UP_TAP_LicenciasConducir.Infrastructure.Filters;
+using UP_TAP_LicenciasConducir.Infrastructure.Options;
 using UP_TAP_LicenciasConducir.Infrastructure.Repositories;
 using UP_TAP_LicenciasConducir.Infrastructure.Services;
 using Utility = UP_TAP_LicenciasConducir.Core.Utilities.Utility;
@@ -20,6 +20,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.Configure<PaginationOptions>(options => builder.Configuration.GetSection("Pagination").Bind(options));
+builder.Services.Configure<PasswordOptions>(options => builder.Configuration.GetSection("PasswordOptions").Bind(options));
 builder.Services.AddEntityFrameworkSqlServer()
     .AddDbContext<LicenciasConducirDataContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DataContext"))).AddOptions();
@@ -34,17 +36,18 @@ builder.Services.AddControllers(options =>
         options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
     });
 
-builder.Services.Configure<PaginationOptions>(options => builder.Configuration.GetSection("Pagination").Bind(options));
-//services.Configure<PasswordOptions>(options => configuration.GetSection("PasswordOptions").Bind(options));
+
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddTransient<IQuestionService, QuestionService>();
 builder.Services.AddTransient<IAnswerService, AnswerService>();
+builder.Services.AddTransient<ISecurityService, SecurityService>();
 builder.Services.AddTransient<IUtility, Utility>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddSingleton<IPasswordService, PasswordService>();
 builder.Services.AddSingleton<IUriService>(provider =>
 {
     var accesor = provider.GetRequiredService<IHttpContextAccessor>();
@@ -54,7 +57,53 @@ builder.Services.AddSingleton<IUriService>(provider =>
 });
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(option =>
+{
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Licencias API", Version = "v1" });
+    option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter a valid token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
+    });
+    option.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
+});
+
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Authentication:Issuer"],
+        ValidAudience = builder.Configuration["Authentication:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:SecretKey"]))
+    };
+
+});
 
 builder.Services.AddMvc(options =>
 {
@@ -76,6 +125,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 

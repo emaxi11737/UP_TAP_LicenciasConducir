@@ -22,7 +22,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Data
         public virtual DbSet<MedicalRevision> MedicalRevisions { get; set; }
         public virtual DbSet<Result> Results { get; set; }
         public virtual DbSet<Answer> Comments { get; set; }
-
+        public virtual DbSet<Security> Securities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

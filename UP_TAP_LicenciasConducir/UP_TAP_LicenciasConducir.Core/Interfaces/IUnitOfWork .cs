@@ -12,6 +12,7 @@ namespace UP_TAP_LicenciasConducir.Core.Interfaces
     {
         IQuestionRepository QuestionRepository { get; }
         IRepository<Answer> AnswerRepository { get; }
+        ISecurityRepository SecurityRepository { get; }
 
         void SaveChanges();
 

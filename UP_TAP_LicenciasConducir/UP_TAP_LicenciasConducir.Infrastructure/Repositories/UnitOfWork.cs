@@ -15,6 +15,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Repositories
         private readonly LicenciasConducirDataContext _context;
         private readonly IQuestionRepository _questionRepository;
         private readonly IRepository<Answer> _answerRepository;
+        private readonly ISecurityRepository _securityRepository;
 
         public UnitOfWork(LicenciasConducirDataContext context)
         {
@@ -22,6 +23,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Repositories
         }
         public IQuestionRepository QuestionRepository => _questionRepository ?? new QuestionRepository(_context);
         public IRepository<Answer> AnswerRepository => _answerRepository ?? new BaseRepository<Answer>(_context);
+        public ISecurityRepository SecurityRepository => _securityRepository ?? new SecurityRepository(_context);
 
         public void Dispose()
         {

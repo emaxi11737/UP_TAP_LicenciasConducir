@@ -13,20 +13,15 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Mappings
     {
         public GlobalExceptionFilter()
         {
-            CreateMap<Answer, AnswerDto>();
-            CreateMap<AnswerDto, Answer>();
+            CreateMap<Answer, AnswerDto>().ReverseMap();
             CreateMap<AnswerPatchDto, Answer>();
-            CreateMap<ExamDto, Exam>();
-            CreateMap<Exam, ExamDto>();
-            CreateMap<MedicalRevision, MedicalRevisionDto>();
-            CreateMap<MedicalRevisionDto, MedicalRevision>();
-            CreateMap<Question, QuestionDto>();
-            CreateMap<QuestionDto, Question>();
+            CreateMap<ExamDto, Exam>().ReverseMap();
+            CreateMap<MedicalRevision, MedicalRevisionDto>().ReverseMap();
+            CreateMap<Question, QuestionDto>().ReverseMap();
             CreateMap<QuestionPatchDto, Question>();
-            CreateMap<Quiz, QuizDto>();
-            CreateMap<QuizDto, Quiz>();
-            CreateMap<Result, ResultDto>();
-            CreateMap<ResultDto, Result>();
+            CreateMap<Quiz, QuizDto>().ReverseMap();
+            CreateMap<Result, ResultDto>().ReverseMap();
+            CreateMap<Security, SecurityDto>().ReverseMap();
         }
     }
 }

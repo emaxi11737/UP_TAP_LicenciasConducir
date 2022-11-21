@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System.Net;
 using UP_TAP_LicenciasConducir.API.Responses;
@@ -15,7 +13,7 @@ using UP_TAP_LicenciasConducir.Infrastructure.Services;
 
 namespace UP_TAP_LicenciasConducir.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]

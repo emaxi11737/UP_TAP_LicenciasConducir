@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UP_TAP_LicenciasConducir.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using UP_TAP_LicenciasConducir.Infrastructure.Data;
 namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
 {
     [DbContext(typeof(LicenciasConducirDataContext))]
-    partial class LicenciasConducirDataContextModelSnapshot : ModelSnapshot
+    [Migration("20221121024021_Insert_Security")]
+    partial class Insert_Security
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
