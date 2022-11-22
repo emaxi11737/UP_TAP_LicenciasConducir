@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UP_TAP_LicenciasConducir.Core.QueryFilters;
+using UP_TAP_LicenciasConducir.Infrastructure.Services.Interfaces;
 
 namespace UP_TAP_LicenciasConducir.Infrastructure.Services
 {

@@ -14,8 +14,8 @@ namespace UP_TAP_LicenciasConducir.Core.Interfaces
         PagedList<Question> GetQuestions(QueryFilter filters);
         PagedList<Question> GetRandomQuestions(QueryFilter filters);
         Task<Question> GetQuestion(int id);
-        Task InsertQuestion(Question post);
-        Task<bool> UpdateQuestion(Question post);
+        Task InsertQuestion(Question question);
+        Task<bool> UpdateQuestion(Question question);
         Task<bool> DeleteQuestion(int id);
  
     }

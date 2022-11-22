@@ -2,6 +2,7 @@
 using System.Text;
 using Microsoft.Extensions.Options;
 using UP_TAP_LicenciasConducir.Infrastructure.Options;
+using UP_TAP_LicenciasConducir.Infrastructure.Services.Interfaces;
 
 namespace UP_TAP_LicenciasConducir.Infrastructure.Services
 {

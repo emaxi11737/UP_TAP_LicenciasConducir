@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UP_TAP_LicenciasConducir.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using UP_TAP_LicenciasConducir.Infrastructure.Data;
 namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
 {
     [DbContext(typeof(LicenciasConducirDataContext))]
-    partial class LicenciasConducirDataContextModelSnapshot : ModelSnapshot
+    [Migration("20221121181207_Users_Exam")]
+    partial class Users_Exam
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,8 +104,11 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
                     b.Property<int>("ExamId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("IsPassed")
+                    b.Property<bool>("IsPassed")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("RevisionDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -111,32 +116,6 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("MedicalRevisions");
-                });
-
-            modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.MedicalShift", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("MedicalRevisionId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MedicalRevisionId")
-                        .IsUnique()
-                        .HasFilter("[MedicalRevisionId] IS NOT NULL");
-
-                    b.ToTable("MedicalShifts");
                 });
 
             modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.Question", b =>
@@ -286,15 +265,6 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
                     b.Navigation("Exam");
                 });
 
-            modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.MedicalShift", b =>
-                {
-                    b.HasOne("UP_TAP_LicenciasConducir.Core.Entities.MedicalRevision", "MedicalRevision")
-                        .WithOne("MedicalShift")
-                        .HasForeignKey("UP_TAP_LicenciasConducir.Core.Entities.MedicalShift", "MedicalRevisionId");
-
-                    b.Navigation("MedicalRevision");
-                });
-
             modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.Quiz", b =>
                 {
                     b.HasOne("UP_TAP_LicenciasConducir.Core.Entities.Exam", "Exam")
@@ -328,12 +298,6 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Quiz")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("UP_TAP_LicenciasConducir.Core.Entities.MedicalRevision", b =>
-                {
-                    b.Navigation("MedicalShift")
                         .IsRequired();
                 });
 

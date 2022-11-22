@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using UP_TAP_LicenciasConducir.Core.Entities;
 
-namespace UP_TAP_LicenciasConducir.Core.Interfaces
+namespace UP_TAP_LicenciasConducir.Core.Services.Interfaces
 {
     public interface ISecurityService
     {

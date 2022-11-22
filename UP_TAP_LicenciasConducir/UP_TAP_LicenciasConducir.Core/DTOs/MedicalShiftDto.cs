@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace UP_TAP_LicenciasConducir.Core.DTOs
 {
-    public class QuizDto
+    public class MedicalShiftDto
     {
-        public string AccessPassword { get; set; }
-        public int ExamId { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int? MedicalRevisionId { get; set; }
     }
 }

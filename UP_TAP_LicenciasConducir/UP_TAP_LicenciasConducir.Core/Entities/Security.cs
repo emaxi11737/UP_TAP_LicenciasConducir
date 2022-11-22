@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UP_TAP_LicenciasConducir.Core.Entities.Intermediates;
 using UP_TAP_LicenciasConducir.Core.Enums;
 
 namespace UP_TAP_LicenciasConducir.Core.Entities
@@ -17,5 +18,6 @@ namespace UP_TAP_LicenciasConducir.Core.Entities
         public string Password { get; set; }
 
         public RoleType Role { get; set; }
+        public ICollection<Exam> Exams { get; set; }
     }
 }

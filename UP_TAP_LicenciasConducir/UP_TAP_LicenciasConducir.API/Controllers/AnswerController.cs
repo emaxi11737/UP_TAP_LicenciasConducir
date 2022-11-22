@@ -3,17 +3,19 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net;
+using System.Security.Claims;
 using UP_TAP_LicenciasConducir.API.Responses;
 using UP_TAP_LicenciasConducir.Core.CustomEntities;
 using UP_TAP_LicenciasConducir.Core.DTOs;
 using UP_TAP_LicenciasConducir.Core.Entities;
-using UP_TAP_LicenciasConducir.Core.Interfaces;
+using UP_TAP_LicenciasConducir.Core.Enums;
 using UP_TAP_LicenciasConducir.Core.QueryFilters;
-using UP_TAP_LicenciasConducir.Infrastructure.Services;
+using UP_TAP_LicenciasConducir.Core.Services.Interfaces;
+using UP_TAP_LicenciasConducir.Infrastructure.Services.Interfaces;
 
 namespace UP_TAP_LicenciasConducir.API.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = nameof(RoleType.Administrator))]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]

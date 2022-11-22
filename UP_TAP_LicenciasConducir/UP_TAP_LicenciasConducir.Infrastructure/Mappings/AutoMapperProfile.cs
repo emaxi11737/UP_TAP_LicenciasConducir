@@ -17,6 +17,8 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Mappings
             CreateMap<AnswerPatchDto, Answer>();
             CreateMap<ExamDto, Exam>().ReverseMap();
             CreateMap<MedicalRevision, MedicalRevisionDto>().ReverseMap();
+            CreateMap<MedicalRevisionPatchDto, MedicalRevision>();
+            CreateMap<MedicalShift, MedicalShiftDto>().ReverseMap();
             CreateMap<Question, QuestionDto>().ReverseMap();
             CreateMap<QuestionPatchDto, Question>();
             CreateMap<Quiz, QuizDto>().ReverseMap();

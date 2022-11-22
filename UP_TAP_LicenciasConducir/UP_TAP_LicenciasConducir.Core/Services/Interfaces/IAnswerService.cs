@@ -7,7 +7,7 @@ using UP_TAP_LicenciasConducir.Core.CustomEntities;
 using UP_TAP_LicenciasConducir.Core.Entities;
 using UP_TAP_LicenciasConducir.Core.QueryFilters;
 
-namespace UP_TAP_LicenciasConducir.Core.Interfaces
+namespace UP_TAP_LicenciasConducir.Core.Services.Interfaces
 {
     public interface IAnswerService
     {
@@ -15,9 +15,9 @@ namespace UP_TAP_LicenciasConducir.Core.Interfaces
 
         Task<Answer> GetAnswer(int id);
 
-        Task InsertAnswer(Answer post);
+        Task InsertAnswer(Answer answer);
 
-        Task<bool> UpdateAnswer(Answer post);
+        Task<bool> UpdateAnswer(Answer answer);
 
         Task<bool> DeleteAnswer(int id);
     }

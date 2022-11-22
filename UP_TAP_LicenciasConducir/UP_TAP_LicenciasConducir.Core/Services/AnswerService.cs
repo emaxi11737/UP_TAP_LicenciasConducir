@@ -9,6 +9,7 @@ using UP_TAP_LicenciasConducir.Core.Entities;
 using UP_TAP_LicenciasConducir.Core.Exceptions;
 using UP_TAP_LicenciasConducir.Core.Interfaces;
 using UP_TAP_LicenciasConducir.Core.QueryFilters;
+using UP_TAP_LicenciasConducir.Core.Services.Interfaces;
 
 namespace UP_TAP_LicenciasConducir.Core.Services
 {

@@ -20,4 +20,8 @@
     <ProjectReference Include="..\UP_TAP_LicenciasConducir.Core\UP_TAP_LicenciasConducir.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\Interfaces\" />
+  </ItemGroup>
+
 </Project>

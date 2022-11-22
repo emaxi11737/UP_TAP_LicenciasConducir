@@ -9,7 +9,7 @@ using UP_TAP_LicenciasConducir.Core.DTOs;
 using UP_TAP_LicenciasConducir.Core.Entities;
 using UP_TAP_LicenciasConducir.Core.Interfaces;
 using UP_TAP_LicenciasConducir.Core.QueryFilters;
-using UP_TAP_LicenciasConducir.Infrastructure.Services;
+using UP_TAP_LicenciasConducir.Infrastructure.Services.Interfaces;
 
 namespace UP_TAP_LicenciasConducir.API.Controllers
 {

@@ -7,11 +7,11 @@ using UP_TAP_LicenciasConducir.Core.CustomEntities;
 using UP_TAP_LicenciasConducir.Core.Entities;
 using UP_TAP_LicenciasConducir.Core.QueryFilters;
 
-namespace UP_TAP_LicenciasConducir.Core.Interfaces
+namespace UP_TAP_LicenciasConducir.Core.Services.Interfaces
 {
-    public interface IUtility
+    public interface IResultService
     {
-        IEnumerable<Question> Random(IEnumerable<Question> list);
+        PagedList<Result> GetResults(QueryFilter filters);
     }
 }
 

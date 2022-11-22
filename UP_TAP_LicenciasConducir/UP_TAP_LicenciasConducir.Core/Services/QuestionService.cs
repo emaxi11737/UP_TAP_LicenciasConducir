@@ -9,6 +9,7 @@ using UP_TAP_LicenciasConducir.Core.Entities;
 using UP_TAP_LicenciasConducir.Core.Exceptions;
 using UP_TAP_LicenciasConducir.Core.Interfaces;
 using UP_TAP_LicenciasConducir.Core.QueryFilters;
+using UP_TAP_LicenciasConducir.Core.Utilities.Interfaces;
 
 namespace UP_TAP_LicenciasConducir.Core.Services
 {
@@ -16,13 +17,13 @@ namespace UP_TAP_LicenciasConducir.Core.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly PaginationOptions _paginationOptions;
-        private readonly IUtility _utility;
+        private readonly IUtilityService _utilityService;
 
-        public QuestionService(IUnitOfWork unitOfWork, IOptions<PaginationOptions> options, IUtility utility)
+        public QuestionService(IUnitOfWork unitOfWork, IOptions<PaginationOptions> options, IUtilityService utilityService)
         {
             _unitOfWork = unitOfWork;
             _paginationOptions = options.Value;
-            _utility = utility;
+            _utilityService = utilityService;
         }
 
      
@@ -48,7 +49,7 @@ namespace UP_TAP_LicenciasConducir.Core.Services
             filters.PageNumber = filters.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : filters.PageNumber;
             filters.PageSize = filters.PageSize == 0 ? _paginationOptions.DefaultPageSize : filters.PageSize;
             
-            var questions = _utility.Random(_unitOfWork.QuestionRepository.GetAllInclude());
+            var questions = _utilityService.Random(_unitOfWork.QuestionRepository.GetAllInclude());
 
             var pagedQuestions = PagedList<Question>.Create(questions, filters.PageNumber, filters.PageSize);
             return pagedQuestions;

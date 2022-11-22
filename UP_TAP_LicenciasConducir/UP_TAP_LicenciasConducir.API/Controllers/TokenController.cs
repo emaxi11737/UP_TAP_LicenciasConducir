@@ -4,8 +4,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using UP_TAP_LicenciasConducir.Core.Entities;
-using UP_TAP_LicenciasConducir.Core.Interfaces;
-using UP_TAP_LicenciasConducir.Infrastructure.Services;
+using UP_TAP_LicenciasConducir.Core.Services.Interfaces;
+using UP_TAP_LicenciasConducir.Infrastructure.Services.Interfaces;
 
 namespace UP_TAP_LicenciasConducir.API.Controllers
 {
@@ -57,6 +57,7 @@ namespace UP_TAP_LicenciasConducir.API.Controllers
             {
                 new Claim(ClaimTypes.Name, security.UserName),
                 new Claim("User", security.User),
+                new Claim("UserId", security.Id.ToString()),
                 new Claim(ClaimTypes.Role, security.Role.ToString()),
             };
 

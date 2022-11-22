@@ -8,12 +8,15 @@ using System.Text;
 using UP_TAP_LicenciasConducir.Core.CustomEntities;
 using UP_TAP_LicenciasConducir.Core.Interfaces;
 using UP_TAP_LicenciasConducir.Core.Services;
+using UP_TAP_LicenciasConducir.Core.Services.Interfaces;
+using UP_TAP_LicenciasConducir.Core.Utilities;
+using UP_TAP_LicenciasConducir.Core.Utilities.Interfaces;
 using UP_TAP_LicenciasConducir.Infrastructure.Data;
 using UP_TAP_LicenciasConducir.Infrastructure.Filters;
 using UP_TAP_LicenciasConducir.Infrastructure.Options;
 using UP_TAP_LicenciasConducir.Infrastructure.Repositories;
 using UP_TAP_LicenciasConducir.Infrastructure.Services;
-using Utility = UP_TAP_LicenciasConducir.Core.Utilities.Utility;
+using UP_TAP_LicenciasConducir.Infrastructure.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,13 +44,18 @@ builder.Services.AddControllers(options =>
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-builder.Services.AddTransient<IQuestionService, QuestionService>();
 builder.Services.AddTransient<IAnswerService, AnswerService>();
+builder.Services.AddTransient<IExamService, ExamService>();
+builder.Services.AddTransient<IMedicalRevisionService, MedicalRevisionService>();
+builder.Services.AddTransient<IMedicalShiftService, MedicalShiftService>();
+builder.Services.AddTransient<IQuestionService, QuestionService>();
 builder.Services.AddTransient<ISecurityService, SecurityService>();
-builder.Services.AddTransient<IUtility, Utility>();
-builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
-builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddTransient<IQuizService, QuizService>();
+builder.Services.AddTransient<IResultService, ResultService>();
+builder.Services.AddTransient<IUtilityService, UtilityService>();
 builder.Services.AddSingleton<IPasswordService, PasswordService>();
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 builder.Services.AddSingleton<IUriService>(provider =>
 {
     var accesor = provider.GetRequiredService<IHttpContextAccessor>();
@@ -124,8 +132,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

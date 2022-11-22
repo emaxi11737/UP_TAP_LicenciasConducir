@@ -1,4 +1,4 @@
-﻿namespace UP_TAP_LicenciasConducir.Infrastructure.Services
+﻿namespace UP_TAP_LicenciasConducir.Infrastructure.Services.Interfaces
 {
     public interface IPasswordService
     {

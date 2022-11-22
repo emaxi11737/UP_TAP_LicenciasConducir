@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace UP_TAP_LicenciasConducir.Core.Entities
 {
-    public class Exam : BaseEntity
+    public class MedicalShift : BaseEntity
     {
-        public bool UseGlasses { get; set; }
-        public int UserId { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int? MedicalRevisionId { get; set; }
         public virtual MedicalRevision MedicalRevision { get; set; }
-        public virtual Quiz Quiz { get; set; }
-        public virtual Security User { get; set; }
-
     }
 }
