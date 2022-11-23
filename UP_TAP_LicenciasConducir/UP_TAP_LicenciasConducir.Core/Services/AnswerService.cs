@@ -45,9 +45,8 @@ namespace UP_TAP_LicenciasConducir.Core.Services
 
             var question = await _unitOfWork.QuestionRepository.GetById(answer.QuestionId);
             if (question == null)
-            {
                 throw new BusinessException("Question doesn't exist");
-            }
+
             await _unitOfWork.AnswerRepository.Add(answer);
             await _unitOfWork.SaveChangesAsync();
         }

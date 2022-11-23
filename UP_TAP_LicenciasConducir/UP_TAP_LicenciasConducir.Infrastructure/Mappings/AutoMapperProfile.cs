@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using UP_TAP_LicenciasConducir.Core.DTOs;
 using UP_TAP_LicenciasConducir.Core.Entities;
+using UP_TAP_LicenciasConducir.Core.Entities.Intermediates;
 
 namespace UP_TAP_LicenciasConducir.Infrastructure.Mappings
 {
@@ -22,6 +23,9 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Mappings
             CreateMap<Question, QuestionDto>().ReverseMap();
             CreateMap<QuestionPatchDto, Question>();
             CreateMap<Quiz, QuizDto>().ReverseMap();
+            CreateMap<QuizPatchDto, Quiz>();
+            CreateMap<QuizQuestion, QuizQuestionDto>().ReverseMap();
+            CreateMap<QuizQuestionPatchDto, QuizQuestion>();
             CreateMap<Result, ResultDto>().ReverseMap();
             CreateMap<Security, SecurityDto>().ReverseMap();
         }

@@ -11,6 +11,7 @@ namespace UP_TAP_LicenciasConducir.Core.Services.Interfaces
 {
     public interface IResultService
     {
+        Task<Result> InsertResult(int quizId);
         PagedList<Result> GetResults(QueryFilter filters);
     }
 }

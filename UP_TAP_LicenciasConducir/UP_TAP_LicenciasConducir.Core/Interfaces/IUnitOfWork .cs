@@ -16,7 +16,7 @@ namespace UP_TAP_LicenciasConducir.Core.Interfaces
         IRepository<Exam> ExamRepository { get; }
         IRepository<QuizQuestion> QuizQuestionRepository { get; }
         IRepository<Result> ResultRepository { get; }
-        IRepository<Quiz> QuizRepository { get; }
+        IQuizRepository QuizRepository { get; }
         IMedicalRevisionRepository MedicalRevisionRepository { get; }
         IMedicalShiftRepository MedicalShiftRepository { get; }
         ISecurityRepository SecurityRepository { get; }

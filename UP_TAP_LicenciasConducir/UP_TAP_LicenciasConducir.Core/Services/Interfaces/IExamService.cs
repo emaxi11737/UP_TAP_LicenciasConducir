@@ -11,6 +11,8 @@ namespace UP_TAP_LicenciasConducir.Core.Services.Interfaces
 {
     public interface IExamService
     {
+        Task<Exam> GetExam(int id);
+
         Task InsertExam(Exam exam);
 
     }

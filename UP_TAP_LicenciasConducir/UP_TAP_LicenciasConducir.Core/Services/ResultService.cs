@@ -13,11 +13,12 @@ namespace UP_TAP_LicenciasConducir.Core.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly PaginationOptions _paginationOptions;
-
-        public ResultService(IUnitOfWork unitOfWork, IOptions<PaginationOptions> options)
+        private readonly IQuizService _quizService;
+        public ResultService(IUnitOfWork unitOfWork, IOptions<PaginationOptions> options, IQuizService quizService)
         {
             _unitOfWork = unitOfWork;
             _paginationOptions = options.Value;
+            _quizService = quizService;
         }
 
 
@@ -30,6 +31,22 @@ namespace UP_TAP_LicenciasConducir.Core.Services
 
             var pagedQuestions = PagedList<Result>.Create(results, filters.PageNumber, filters.PageSize);
             return pagedQuestions;
+        }
+
+
+        public async Task<Result> InsertResult(int quizId)
+        {
+            var quiz = _quizService.GetQuiz(quizId);
+            var score = quiz.QuizQuestions.Count(x => x.Answer.IsRight);
+            var result = new Result
+            {
+                ExamId = quiz.ExamId,
+                ResultDate = DateTime.Now,
+                Score = score
+            };
+            await _unitOfWork.ResultRepository.Add(result);
+            await _unitOfWork.SaveChangesAsync();
+            return result;
         }
     }
 }

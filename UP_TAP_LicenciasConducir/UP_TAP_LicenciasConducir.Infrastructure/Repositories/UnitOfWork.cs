@@ -17,7 +17,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Repositories
         private readonly IQuestionRepository _questionRepository;
         private readonly IRepository<Answer> _answerRepository;
         private readonly IRepository<Exam> _examRepository;
-        private readonly IRepository<Quiz> _quizRepository;
+        private readonly IQuizRepository _quizRepository;
         private readonly IRepository<QuizQuestion> _quizQuestionRepository;
         private readonly IRepository<Result> _resultRepository;
         private readonly IMedicalRevisionRepository _medicalRevisionRepository;
@@ -31,7 +31,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Repositories
         public IQuestionRepository QuestionRepository => _questionRepository ?? new QuestionRepository(_context);
         public IRepository<Answer> AnswerRepository => _answerRepository ?? new BaseRepository<Answer>(_context);
         public IRepository<Exam> ExamRepository => _examRepository ?? new BaseRepository<Exam>(_context);
-        public IRepository<Quiz> QuizRepository => _quizRepository ?? new BaseRepository<Quiz>(_context);
+        public IQuizRepository QuizRepository => _quizRepository ?? new QuizRepository(_context);
         public IRepository<QuizQuestion> QuizQuestionRepository => _quizQuestionRepository ?? new BaseRepository<QuizQuestion>(_context);
         public IRepository<Result> ResultRepository => _resultRepository ?? new BaseRepository<Result>(_context);
         public IMedicalRevisionRepository MedicalRevisionRepository => _medicalRevisionRepository ?? new MedicalRevisionRepository(_context);

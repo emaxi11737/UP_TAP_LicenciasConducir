@@ -11,7 +11,9 @@ namespace UP_TAP_LicenciasConducir.Core.Services.Interfaces
 {
     public interface IQuizService
     {
+        Task<bool> UpdateQuiz(Quiz quiz);
         Task InsertQuiz(Quiz quiz);
+        Quiz GetQuiz(int id);
 
     }
 }

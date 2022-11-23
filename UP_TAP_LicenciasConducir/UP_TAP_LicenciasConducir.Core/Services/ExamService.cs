@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using UP_TAP_LicenciasConducir.Core.CustomEntities;
 using UP_TAP_LicenciasConducir.Core.Entities;
+using UP_TAP_LicenciasConducir.Core.Exceptions;
 using UP_TAP_LicenciasConducir.Core.Interfaces;
 using UP_TAP_LicenciasConducir.Core.Services.Interfaces;
 
@@ -21,8 +22,17 @@ namespace UP_TAP_LicenciasConducir.Core.Services
             _medicalRevisionService = medicalRevisionService;
         }
 
+        public async Task<Exam> GetExam(int id)
+        {
+            return await _unitOfWork.ExamRepository.GetById(id);
+        }
+
         public async Task InsertExam(Exam exam)
         {
+            var exams = _unitOfWork.ExamRepository.GetAll().Where(x => x.UserId == exam.UserId);
+            if(exams.Count() >= 3)
+                throw new BusinessException("All Attempts used");
+
             await _unitOfWork.ExamRepository.Add(exam);
             await _unitOfWork.SaveChangesAsync();
 

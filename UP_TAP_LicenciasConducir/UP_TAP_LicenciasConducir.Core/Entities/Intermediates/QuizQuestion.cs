@@ -10,8 +10,10 @@ namespace UP_TAP_LicenciasConducir.Core.Entities.Intermediates
     {
         public int QuizId { get; set; }
         public virtual Quiz Quiz { get; set; }
-        public int AnswerId { get; set; }
+        public int? AnswerId { get; set; }
         public virtual Answer Answer { get; set; }
+        public int QuestionId { get; set; }
+        public virtual Question Question { get; set; }
 
     }
 }

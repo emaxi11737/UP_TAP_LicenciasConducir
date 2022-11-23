@@ -11,6 +11,8 @@ namespace UP_TAP_LicenciasConducir.Core.Interfaces
     {
         IEnumerable<T> GetAll();
         Task<T> GetById(int id);
+        public Task BulkInsert(List<T> list);
+        public Task BulkUpdate(List<T> list);
         Task Add(T entity);
         void Update(T entity);
         Task Delete(int id);

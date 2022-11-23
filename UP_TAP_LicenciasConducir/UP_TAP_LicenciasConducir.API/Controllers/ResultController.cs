@@ -50,8 +50,7 @@ namespace UP_TAP_LicenciasConducir.API.Controllers
                 Attended = results.Count,
                 Passed = results.Count(x => x.Score >= 8),
                 Failed = results.Count(x => x.Score < 8),
-                //Absent = results.Where(x=> x.ResultDate == null)
-                Absent = 0
+                Absent = results.Count(x => x.Score == 0)
 
 
             };
