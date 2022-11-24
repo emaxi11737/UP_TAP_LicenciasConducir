@@ -9,11 +9,12 @@ using UP_TAP_LicenciasConducir.Core.Entities.Intermediates;
 
 namespace UP_TAP_LicenciasConducir.Core.DTOs
 {
-    public class QuizDto
+    public class QuizPreviewDto
     {
-        public string AccessPassword { get; set; }
         public int ExamId { get; set; }
+        public int Id { get; set; }
 
+        public List<QuizQuestionDto> QuizQuestions { get; set; }
 
     }
 }

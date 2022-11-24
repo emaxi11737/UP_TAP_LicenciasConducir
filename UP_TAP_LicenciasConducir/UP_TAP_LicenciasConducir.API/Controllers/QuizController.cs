@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UP_TAP_LicenciasConducir.API.Responses;
 using UP_TAP_LicenciasConducir.Core.DTOs;
 using UP_TAP_LicenciasConducir.Core.Entities;
+using UP_TAP_LicenciasConducir.Core.Enums;
 using UP_TAP_LicenciasConducir.Core.Exceptions;
 using UP_TAP_LicenciasConducir.Core.Services;
 using UP_TAP_LicenciasConducir.Core.Services.Interfaces;
@@ -10,7 +12,7 @@ using UP_TAP_LicenciasConducir.Infrastructure.Services.Interfaces;
 
 namespace UP_TAP_LicenciasConducir.API.Controllers
 {
-    //[Authorize(Roles = nameof(RoleType.Consumer))]
+    [Authorize(Roles = nameof(RoleType.Consumer))]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
@@ -42,8 +44,8 @@ namespace UP_TAP_LicenciasConducir.API.Controllers
 
             await _quizService.InsertQuiz(quiz);
 
-            quizDto = _mapper.Map<QuizDto>(quiz);
-            var response = new ApiResponse<QuizDto>(quizDto);
+            var quizPreviewDto = _mapper.Map<QuizPreviewDto>(quiz);
+            var response = new ApiResponse<QuizPreviewDto>(quizPreviewDto);
             return Ok(response);
         }
 
@@ -51,8 +53,8 @@ namespace UP_TAP_LicenciasConducir.API.Controllers
         public async Task<IActionResult> GetQuiz(int id)
         {
             var quiz = _quizService.GetQuiz(id);
-            var quizDto = _mapper.Map<QuizDto>(quiz);
-            var response = new ApiResponse<QuizDto>(quizDto);
+            var quizDto = _mapper.Map<QuizPreviewDto>(quiz);
+            var response = new ApiResponse<QuizPreviewDto>(quizDto);
             return Ok(response);
         }
 
@@ -69,22 +71,18 @@ namespace UP_TAP_LicenciasConducir.API.Controllers
                 throw new BusinessException("Password Expired at " + quiz.PasswordExpirationDate.ToString("dd/MM/yyyy hh:mm"));
 
             quiz = _mapper.Map<Quiz>(quizPatchDto);
+
             quiz.Id = id;
+            quiz.PasswordExpirationDate = DateTime.Now;
 
 
+            var quizCreated = await _quizService.UpdateQuiz(quiz);
 
-            await _quizService.UpdateQuiz(quiz);
+            if (!quizCreated)
+                return BadRequest();
 
-            var result = await _resultService.InsertResult(quiz.Id);
-            if (result.Score < 8)
-            {
-                var exam = await _examService.GetExam(quiz.ExamId);
-                exam.Id = 0;
-                await _examService.InsertExam(exam);
-            }
-            var resultDto = _mapper.Map<ResultDto>(result);
-            var response = new ApiResponse<ResultDto>(resultDto);
-            return Ok(response);
+
+            return Ok();
         }
 
         private async Task<(bool, Quiz)> IsValidPassword(Quiz quiz, QuizPatchDto quizDto)

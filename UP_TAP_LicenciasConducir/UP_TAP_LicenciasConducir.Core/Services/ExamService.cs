@@ -30,6 +30,7 @@ namespace UP_TAP_LicenciasConducir.Core.Services
         public async Task InsertExam(Exam exam)
         {
             var exams = _unitOfWork.ExamRepository.GetAll().Where(x => x.UserId == exam.UserId);
+   
             if(exams.Count() >= 3)
                 throw new BusinessException("All Attempts used");
 

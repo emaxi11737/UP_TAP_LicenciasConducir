@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "jCgINekSQSNQ5sH5DXog7Tmm6C6MKIsc61QUtQUMuWlGsIfGIPHV370j7pUtHPzcn9eq8kWjFbBZo3tGGE8/Ww==",
+  "dgSpecHash": "xqw13BMJuAHeAe/dOmET5prTefaK/5SD3ixvFSyga3827OkFmCjivmj+YmJBtR9+CaQ3JH7UOXA4asSVMa2W0g==",
   "success": true,
   "projectFilePath": "C:\\Repos\\UP_TAP_LicenciasConducir\\UP_TAP_LicenciasConducir\\UP_TAP_LicenciasConducir.UnitTest\\UP_TAP_LicenciasConducir.UnitTest.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\emaxi\\.nuget\\packages\\bouncycastle.netcore\\1.9.0\\bouncycastle.netcore.1.9.0.nupkg.sha512",
+    "C:\\Users\\emaxi\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
     "C:\\Users\\emaxi\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\emaxi\\.nuget\\packages\\coverlet.msbuild\\3.2.0\\coverlet.msbuild.3.2.0.nupkg.sha512",
     "C:\\Users\\emaxi\\.nuget\\packages\\microsoft.aspnetcore.mvc.testing\\6.0.11\\microsoft.aspnetcore.mvc.testing.6.0.11.nupkg.sha512",
@@ -42,6 +44,7 @@
     "C:\\Users\\emaxi\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.3.2\\microsoft.testplatform.objectmodel.17.3.2.nupkg.sha512",
     "C:\\Users\\emaxi\\.nuget\\packages\\microsoft.testplatform.testhost\\17.3.2\\microsoft.testplatform.testhost.17.3.2.nupkg.sha512",
     "C:\\Users\\emaxi\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\emaxi\\.nuget\\packages\\moq\\4.18.2\\moq.4.18.2.nupkg.sha512",
     "C:\\Users\\emaxi\\.nuget\\packages\\mstest.testadapter\\2.2.10\\mstest.testadapter.2.2.10.nupkg.sha512",
     "C:\\Users\\emaxi\\.nuget\\packages\\mstest.testframework\\2.2.10\\mstest.testframework.2.2.10.nupkg.sha512",
     "C:\\Users\\emaxi\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",

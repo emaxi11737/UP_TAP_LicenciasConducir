@@ -19,6 +19,7 @@ namespace UP_TAP_LicenciasConducir.Infrastructure.Repositories
 
         public IEnumerable<Quiz> GetAllInclude()
         {
+
             return _entities
                 .Include(x => x.QuizQuestions)
                 .ThenInclude(x=> x.Answer)

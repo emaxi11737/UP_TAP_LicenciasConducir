@@ -38,8 +38,8 @@ namespace UP_TAP_LicenciasConducir.API.Controllers
 
             await _examService.InsertExam(exam);
 
-            examDto = _mapper.Map<ExamDto>(exam);
-            var response = new ApiResponse<ExamDto>(examDto);
+            var examPreviewDto = _mapper.Map<ExamPreviewDto>(exam);
+            var response = new ApiResponse<ExamPreviewDto>(examPreviewDto);
             return Ok(response);
         }
         protected int GetUserId()

@@ -63,8 +63,12 @@ namespace UP_TAP_LicenciasConducir.Core.Services
                     QuizId = quiz.Id,
                 }
             ).ToList();
+
+
             await _unitOfWork.QuizQuestionRepository.BulkInsert(questions);
             await _unitOfWork.SaveChangesAsync();
+
+           
 
 
         }
@@ -74,8 +78,11 @@ namespace UP_TAP_LicenciasConducir.Core.Services
         {
             var existingQuiz = await _unitOfWork.QuizRepository.GetById(quiz.Id);
 
+            existingQuiz.PasswordExpirationDate = quiz.PasswordExpirationDate;
+
             quiz.QuizQuestions.ForEach(x=> x.QuizId = existingQuiz.Id);
 
+            _unitOfWork.QuizRepository.Update(existingQuiz);
             await _unitOfWork.QuizQuestionRepository.BulkUpdate(quiz.QuizQuestions);
 
             await _unitOfWork.SaveChangesAsync();
@@ -85,7 +92,7 @@ namespace UP_TAP_LicenciasConducir.Core.Services
 
         public Quiz GetQuiz(int id)
         {
-            return _unitOfWork.QuizRepository.GetAllInclude().First(X => X.Id == id);
+            return _unitOfWork.QuizRepository.GetAllInclude().First(x => x.Id == id);
         }
     }
 }
